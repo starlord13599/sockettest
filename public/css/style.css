@@ -1,0 +1,119 @@
+.w-400 {
+    width: 400px;
+}
+
+.chat {
+    height: 91.5vh;
+    display: flex;
+}
+
+.chat-side {
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-basis: 20%;
+    background-color: #323739;
+}
+
+
+.chat-main {
+    flex-basis: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-main-upper {
+    padding: 1rem 2rem 1rem 2rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    flex-basis: 90%;
+    background-color: #0D1418;
+}
+
+.chat-main-lower {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 10%;
+    width: 100%;
+    background-color: #2A2F32;
+}
+
+.message-input {
+    background-color: #2A2F32;
+    flex-basis: 95%;
+    color: white;
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+.message-input:active {
+    color: white;
+    background-color: #2A2F32;
+}
+
+.message-input:focus {
+    color: white;
+    background-color: #2A2F32;
+}
+
+
+.send {
+    flex-basis: 5%;
+    background-color: #2A2F32;
+    font-size: 2rem;
+    color: white;
+    padding-left: .6rem;
+}
+
+.send:hover {
+    background-color: rgb(17, 17, 17)39;
+}
+
+
+.indi-contact {
+    background-color: #131C21;
+    color: white;
+    padding: .5rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-bottom: .1px solid #323739;
+}
+
+.indi-contact i {
+    font-size: 2.5rem;
+    flex-basis: 20%;
+}
+
+.indi-contact p {
+    flex-basis: 80%;
+    margin: 0;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.messages {
+    padding: .5rem;
+    border-radius: 10px;
+    margin-bottom: .5rem;
+    width: fit-content;
+}
+
+.left {
+    background-color: #262D31;
+    color: #fff;
+    align-self: flex-start;
+}
+
+
+.right {
+    align-self: flex-end;
+    background-color: #056162;
+    color: #fff;
+
+}

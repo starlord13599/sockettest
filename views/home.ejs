@@ -1,0 +1,24 @@
+<div class="container">
+
+    <h3 class="display-6 text-center mt-4"><i class="bi bi-chat"></i> Chit Chat</h3>
+
+    <form class="form-control m-auto w-400" action="/chat">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" id="username" aria-describedby="usernameHelp">
+            <div id="emailHelp" class="form-text">This username will be displayed on the chat.</div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Select a room</label>
+            <select name="room" class="form-select">
+                <option value="javascript">javaScript</option>
+                <option value="python">Python</option>
+                <option value="php">PHP</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
