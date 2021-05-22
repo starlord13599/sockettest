@@ -21,6 +21,17 @@
     flex-direction: column;
 }
 
+.chat-info {
+    display: flex;
+    width: 100%;
+    background-color: #323739;
+
+}
+
+.status {
+    color: yellowgreen;
+}
+
 .chat-main-upper {
     padding: 1rem 2rem 1rem 2rem;
     overflow-x: hidden;

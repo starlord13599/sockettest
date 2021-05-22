@@ -1,8 +1,8 @@
-const socket = io('http://localhost:3000/');
+const socket = io("http://localhost:3000/");
 
-const send = document.querySelector('.send');
-const chatMessages = document.querySelector('.chat-messages');
-const message = document.querySelector('.message-input');
+const send = document.querySelector(".send");
+const chatMessages = document.querySelector(".chat-messages");
+const message = document.querySelector(".message-input");
 
 function parseQuery(query) {
 	return Qs.parse(query, {
@@ -11,29 +11,40 @@ function parseQuery(query) {
 }
 const { username, room } = parseQuery(location.search);
 
-send.addEventListener('click', (e) => {
-	socket.emit('out-message', { username, message: message.value });
+send.addEventListener("click", (e) => {
+	socket.emit("out-message", { username, message: message.value });
 });
 
-message.addEventListener('keypress', (e) => {
+message.addEventListener("keypress", (e) => {
 	if (e.keyCode === 13) {
-		socket.emit('out-message', { username, message: message.value });
+		socket.emit("out-message", { username, message: message.value });
 	}
 });
 
-socket.on('in-message', (data) => {
-	const p = document.createElement('p');
-	p.classList.add('messages');
+socket.on("in-message", (data) => {
+	const p = document.createElement("p");
+	p.classList.add("messages");
 
 	if (username === data.username) {
-		p.classList.add('right');
+		p.classList.add("right");
 	}
 
 	if (username !== data.username) {
-		p.classList.add('left');
+		p.classList.add("left");
 	}
 
 	p.innerText = data.message;
 	chatMessages.appendChild(p);
-	message.value = '';
+	message.value = "";
+});
+
+socket.on("updateStatus", (count) => {
+	let finalCount = count;
+	if (count <= 0) {
+		finalCount = 0;
+	}
+
+	const status = document.querySelector(".status");
+
+	status.innerText = `${finalCount} Active`;
 });

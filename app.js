@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const expressEjsLayout = require('express-ejs-layouts');
-
+// const { sequelize, User } = require('./models');
 const morgan = require('morgan');
 const app = express();
 
@@ -18,6 +18,13 @@ app.use(expressEjsLayout);
 app.set('layout', path.join(__dirname, 'views', 'layouts', 'oneColumn.ejs'));
 app.use(express.static('public'));
 
+//testroute
+// app.get('/', async (req, res) => {
+// 	const users = await User.findAll();
+
+// 	res.json(users);
+// });
+
 //routes to pages
 app.get('/home', (req, res) => {
 	res.render('home');
@@ -30,7 +37,9 @@ app.get('/chat', (req, res) => {
 //io createServer
 io.on('connection', (socket) => {
 	console.debug('User connected');
-	console.debug(getUserCount(io));
+
+	//to emit number of online users
+	io.emit('updateStatus', getUserCount(io) - 1);
 
 	//catch message
 	socket.on('out-message', (data) => {
@@ -38,13 +47,14 @@ io.on('connection', (socket) => {
 	});
 
 	socket.on('disconnect', () => {
-		console.debug('A user left');
-		console.debug(getUserCount(io));
+		io.emit('updateStatus', getUserCount(io) - 1);
 	});
 });
 
 //server start
-server.listen(3000, () => {
+server.listen(3000, async () => {
+	await sequelize.authenticate();
+	console.log('Databse done');
 	console.log('running on http://localhost:3000');
 });
 
